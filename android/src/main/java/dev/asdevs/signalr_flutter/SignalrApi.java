@@ -475,7 +475,6 @@ public class SignalrApi {
       });
     }
     public void onNewMessage(@NonNull String hubNameArg, @NonNull dynamic messageArg, Reply<Void> callback) {
-      
       BasicMessageChannel<Object> channel =
           new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.SignalRPlatformApi.", getCodec());
       channel.send(new ArrayList<Object>(Arrays.asList(hubNameArg, messageArg)), channelReply -> {

@@ -41,6 +41,7 @@ class SignalR extends SignalrPlatformInterface implements SignalRPlatformApi {
   @override
   Future<void> onStatusChange(StatusChangeResult statusChangeResult) async {
     connectionId = statusChangeResult.connectionId;
+    debugPrint('onStatusChange in signalr is called');
 
     statusChangeCallback?.call(statusChangeResult.status);
 
@@ -61,6 +62,7 @@ class SignalR extends SignalrPlatformInterface implements SignalRPlatformApi {
   @override
   Future<String?> connect() async {
     try {
+      debugPrint('Signalr connect called.');
       // Construct ConnectionOptions
       ConnectionOptions options = ConnectionOptions(
         baseUrl: baseUrl,
@@ -88,6 +90,7 @@ class SignalR extends SignalrPlatformInterface implements SignalRPlatformApi {
   @override
   Future<String?> reconnect() async {
     try {
+      debugPrint('ConnectionId in signalr is called');
       connectionId = await _signalrApi.reconnect();
       return connectionId;
     } catch (e) {
@@ -111,6 +114,7 @@ class SignalR extends SignalrPlatformInterface implements SignalRPlatformApi {
   @override
   Future<bool> isConnected() async {
     try {
+      debugPrint('Checking if you are connected to signalr.');
       return await _signalrApi.isConnected();
     } catch (e) {
       return Future.error(e);
