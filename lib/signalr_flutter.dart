@@ -34,6 +34,7 @@ class SignalR extends SignalrPlatformInterface implements SignalRPlatformApi {
   // ------------------------//
   @override
   Future<void> onNewMessage(String hubName, dynamic message) async {
+    debugPrint('Received a new message: $hubName => Position: 1001');
     hubCallback?.call(hubName, message);
   }
 
@@ -44,7 +45,7 @@ class SignalR extends SignalrPlatformInterface implements SignalRPlatformApi {
     statusChangeCallback?.call(statusChangeResult.status);
 
     if (statusChangeResult.errorMessage != null) {
-      debugPrint('SignalR Error: ${statusChangeResult.errorMessage}');
+      debugPrint('SignalR Error (Usama-1): ${statusChangeResult.errorMessage}');
       connectionErrorCallback?.call(statusChangeResult.errorMessage);
     }
   }

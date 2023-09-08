@@ -5,6 +5,7 @@ import 'dart:async';
 import 'dart:typed_data' show Float64List, Int32List, Int64List, Uint8List;
 
 import 'package:flutter/foundation.dart' show ReadBuffer, WriteBuffer;
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 /// Transport method of the signalr connection.
@@ -334,7 +335,8 @@ abstract class SignalRPlatformApi {
       if (api == null) {
         channel.setMessageHandler(null);
       } else {
-        channel.setMessageHandler((Object? message) async {
+        channel.setMessageHandler((dynamic message) async {
+          debugPrint('Got here. $message');
           assert(message != null,
               'Argument for dev.flutter.pigeon.SignalRPlatformApi.onNewMessage was null.');
           final List<Object?> args = (message as List<Object?>?)!;
