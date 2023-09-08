@@ -79,12 +79,13 @@ class _MyAppState extends State<MyApp> {
   void _onStatusChange(ConnectionStatus? status) {
     if (mounted) {
       setState(() {
+        // ignore: sdk_version_since
         signalRStatus = status?.name ?? ConnectionStatus.disconnected.name;
       });
     }
   }
 
-  void _onNewMessage(String methodName, String message) {
+  void _onNewMessage(String methodName, dynamic message) {
     print("MethodName = $methodName, Message = $message");
   }
 
