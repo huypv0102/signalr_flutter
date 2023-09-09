@@ -51,7 +51,7 @@ class SignalR extends SignalrPlatformInterface implements SignalRPlatformApi {
     }
   }
 
-  //---- Public Methods ----//
+  //---- Public Methods ---- -// 
   // ------------------------//
 
   /// Connect to the SignalR Server with given [baseUrl] & [hubName].
