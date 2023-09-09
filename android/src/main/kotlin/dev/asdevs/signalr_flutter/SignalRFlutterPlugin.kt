@@ -60,14 +60,14 @@ class SignalrFlutterPlugin : FlutterPlugin, SignalrApi.SignalRHostApi {
             hub = connection.createHubProxy(connectionOptions.hubName)
 
             connectionOptions.hubMethods?.forEach { methodName ->
-                hub.on(methodName, { res: Any ->
+                hub.on(methodName, { res: dynamic ->
                     Handler(Looper.getMainLooper()).post {
                         // Pass 'res' as is to the signalrApi.onNewMessage method
                         signalrApi.onNewMessage(methodName, res)
                         println("onNewMessages res and methodName from kt file in SignalR called")
                     }
                     println("onNewMessages from kt file in SignalR called")
-                }, Any::class.java)                           
+                }, dynamic::class.java)                          
             }
 
             connection.connected {
