@@ -62,11 +62,12 @@ class SignalrFlutterPlugin : FlutterPlugin, SignalrApi.SignalRHostApi {
             connectionOptions.hubMethods?.forEach { methodName ->
                 hub.on(methodName, { res: Any ->
                     Handler(Looper.getMainLooper()).post {
-                        signalrApi.onNewMessage(methodName, res) { }
-                        println("onNewMessages res and methodName from kt file in signalr called")
+                        // Pass 'res' as is to the signalrApi.onNewMessage method
+                        signalrApi.onNewMessage(methodName, res)
+                        println("onNewMessages res and methodName from kt file in SignalR called")
                     }
-                    println("onNewMessages from kt file in signalr called")
-                }, Any::class.java)                
+                    println("onNewMessages from kt file in SignalR called")
+                }, Any::class.java)                           
             }
 
             connection.connected {
