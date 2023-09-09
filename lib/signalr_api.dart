@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart' show ReadBuffer, WriteBuffer;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-/// Transport method of the signalr connection.
+/// Transport method of the signalr connection...
 enum Transport {
   auto,
   serverSentEvents,

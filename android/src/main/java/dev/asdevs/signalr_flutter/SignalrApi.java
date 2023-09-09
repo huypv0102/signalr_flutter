@@ -6,7 +6,6 @@ package dev.asdevs.signalr_flutter;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import dev.asdevs.signalr_flutter.SignalrApi.ConnectionOptions;
 import io.flutter.plugin.common.BasicMessageChannel;
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.MessageCodec;
@@ -474,9 +473,9 @@ public class SignalrApi {
         callback.reply(null);
       });
     }
-    public void onNewMessage(@NonNull String hubNameArg, @NonNull dynamic messageArg, Reply<Void> callback) {
+    public void onNewMessage(@NonNull String hubNameArg, @NonNull String messageArg, Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-          new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.SignalRPlatformApi.", getCodec());
+          new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.SignalRPlatformApi.onNewMessage", getCodec());
       channel.send(new ArrayList<Object>(Arrays.asList(hubNameArg, messageArg)), channelReply -> {
         callback.reply(null);
       });

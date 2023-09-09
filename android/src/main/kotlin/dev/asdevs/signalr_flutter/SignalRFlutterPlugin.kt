@@ -35,10 +35,8 @@ class SignalrFlutterPlugin : FlutterPlugin, SignalrApi.SignalRHostApi {
         result: SignalrApi.Result<String>?
     ) {
         try {
-            println("onNewMessages res and methodName from kt file in signalr called -1")
             connection =
                 if (connectionOptions.queryString?.isNotEmpty() == true) {
-                    println("onNewMessages res and methodName from kt file in signalr called -2")
                     HubConnection(
                         connectionOptions.baseUrl,
                         connectionOptions.queryString,
@@ -50,7 +48,6 @@ class SignalrFlutterPlugin : FlutterPlugin, SignalrApi.SignalRHostApi {
                 }
 
             if (connectionOptions.headers?.isNotEmpty() == true) {
-                println("onNewMessages res and methodName from kt file in signalr called -3")
                 val cred = Credentials { request ->
                     request.headers = connectionOptions.headers
                 }
@@ -60,14 +57,11 @@ class SignalrFlutterPlugin : FlutterPlugin, SignalrApi.SignalRHostApi {
             hub = connection.createHubProxy(connectionOptions.hubName)
 
             connectionOptions.hubMethods?.forEach { methodName ->
-                hub.on(methodName, { res: dynamic ->
+                hub.on(methodName, { res ->
                     Handler(Looper.getMainLooper()).post {
-                        // Pass 'res' as is to the signalrApi.onNewMessage method
-                        signalrApi.onNewMessage(methodName, res)
-                        println("onNewMessages res and methodName from kt file in SignalR called")
+                        signalrApi.onNewMessage(methodName, res) { }
                     }
-                    println("onNewMessages from kt file in SignalR called")
-                }, dynamic::class.java)                          
+                }, String::class.java)
             }
 
             connection.connected {

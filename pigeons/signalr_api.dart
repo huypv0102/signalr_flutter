@@ -3,7 +3,7 @@ import 'package:pigeon/pigeon.dart';
 /// Transport method of the signalr connection.
 enum Transport { auto, serverSentEvents, longPolling }
 
-/// SignalR connection status--
+/// SignalR connection status ---///
 enum ConnectionStatus {
   connecting,
   connected,
