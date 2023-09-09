@@ -60,8 +60,10 @@ class SignalrFlutterPlugin : FlutterPlugin, SignalrApi.SignalRHostApi {
                 hub.on(methodName, { res ->
                     Handler(Looper.getMainLooper()).post {
                         signalrApi.onNewMessage(methodName, res) { }
+                        println("onNewMessages res and methodName from kt file in signalr called")
                     }
-                }, String::class.java)
+                    println("onNewMessages from kt file in signalr called")
+                }, dynamic::class.java)
             }
 
             connection.connected {
