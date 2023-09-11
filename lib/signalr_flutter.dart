@@ -90,7 +90,7 @@ class SignalR extends SignalrPlatformInterface implements SignalRPlatformApi {
   @override
   Future<String?> reconnect() async {
     try {
-      debugPrint('ConnectionId in signalr is called');
+      debugPrint('ConnectionId reconnect in signalr is called');
       connectionId = await _signalrApi.reconnect();
       return connectionId;
     } catch (e) {

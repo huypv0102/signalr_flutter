@@ -336,7 +336,7 @@ abstract class SignalRPlatformApi {
         channel.setMessageHandler(null);
       } else {
         channel.setMessageHandler((dynamic message) async {
-          debugPrint('Got here. $message');
+          debugPrint('Got here . $message');
           assert(message != null,
               'Argument for dev.flutter.pigeon.SignalRPlatformApi.onNewMessage was null.');
           final List<Object?> args = (message as List<Object?>?)!;
