@@ -30,7 +30,7 @@ class SignalR extends SignalrPlatformInterface implements SignalRPlatformApi {
           hubCallback: hubCallback,
         );
 
-  ///---- Callback Methods ----///
+  ///-1--- Callback Methods ----///
   // --------------------------//
   @override
   Future<void> onNewMessage(String hubName, dynamic message) async {
