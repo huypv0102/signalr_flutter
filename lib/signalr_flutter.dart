@@ -31,7 +31,7 @@ class SignalR extends SignalrPlatformInterface implements SignalRPlatformApi {
         );
 
   ///---- Callback Methods ----///
-  // --1----------------------//
+  // --2----------------------//
   @override
   Future<void> onNewMessage(String hubName, dynamic message) async {
     debugPrint('Received a new message: $hubName => Position: 1000');

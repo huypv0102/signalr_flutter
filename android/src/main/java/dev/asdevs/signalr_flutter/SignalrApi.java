@@ -476,13 +476,19 @@ public class SignalrApi {
     public void onNewMessage(@NonNull String hubNameArg, @NonNull Dynamic messageArg, Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
           new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.SignalRPlatformApi.onNewMessage", getCodec());
-      channel.send(new ArrayList<Object>(Arrays.asList(hubNameArg, try {
-          messageArg
-      } catch (Exception e) {
-          // TODO: handle exception
-      })), channelReply -> {
+      channel.send(
+          new ArrayList<Object>(
+              Arrays.asList(
+                  hubNameArg,
+                  try {
+                      messageArg; 
+                  } catch (Exception e) {
+                      // TODO: handle exception
+                  }
+              )));
+      channelReply -> {
           callback.reply(null);
-      });
+      };
   }
   }
   @NonNull private static Map<String, Object> wrapError(@NonNull Throwable exception) {
