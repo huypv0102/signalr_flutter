@@ -477,13 +477,13 @@ public class SignalrApi {
       BasicMessageChannel<Object> channel =
           new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.SignalRPlatformApi.onNewMessage", getCodec());
       channel.send(new ArrayList<Object>(Arrays.asList(hubNameArg, try {
-        messageArg
+          messageArg
       } catch (Exception e) {
-        // TODO: handle exception
+          // TODO: handle exception
       })), channelReply -> {
-        callback.reply(null);
+          callback.reply(null);
       });
-    }
+  }
   }
   @NonNull private static Map<String, Object> wrapError(@NonNull Throwable exception) {
     Map<String, Object> errorMap = new HashMap<>();
