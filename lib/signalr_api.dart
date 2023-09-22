@@ -339,7 +339,7 @@ abstract class SignalRPlatformApi {
           debugPrint('Got here . $message');
           assert(message != null,
               'Argument for dev.flutter.pigeon.SignalRPlatformApi.onNewMessage was null.');
-          final List<Object?> args = (message as List<Object?>?)!;
+          final List<dynamic> args = (message as List<dynamic>?)!;
           final String? arg_hubName = (args[0] as String?);
           assert(arg_hubName != null,
               'Argument for dev.flutter.pigeon.SignalRPlatformApi.onNewMessage was null, expected non-null String.');
