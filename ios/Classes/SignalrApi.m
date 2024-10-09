@@ -333,7 +333,7 @@ NSObject<FlutterMessageCodec> *FLTSignalRPlatformApiGetCodec() {
     completion(nil);
   }];
 }
-- (void)onNewMessageHubName:(NSString *)arg_hubName message:(NSString *)arg_message completion:(void(^)(NSError *_Nullable))completion {
+- (void)onNewMessageHubName:(NSString *)arg_hubName message:(NSObject *)arg_message completion:(void(^)(NSError *_Nullable))completion {
   FlutterBasicMessageChannel *channel =
     [FlutterBasicMessageChannel
       messageChannelWithName:@"dev.flutter.pigeon.SignalRPlatformApi.onNewMessage"

@@ -50,7 +50,8 @@ public class SwiftSignalrFlutterPlugin: NSObject, FlutterPlugin, FLTSignalRHostA
     if let hubMethods = connectionOptions.hubMethods, !hubMethods.isEmpty {
       hubMethods.forEach { (methodName) in
         hub.on(methodName) { (args) in
-          SwiftSignalrFlutterPlugin.signalrApi?.onNewMessageHubName(methodName, message: args?[0] as? Any ?? "", completion: { error in })
+        let messData = args?[0] as! NSObject
+          SwiftSignalrFlutterPlugin.signalrApi?.onNewMessageHubName(methodName, message: messData, completion: { error in })
         }
       }
     }
